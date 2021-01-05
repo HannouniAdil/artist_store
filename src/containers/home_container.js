@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux'
 import { artistListAll, fetchForArtist } from '../actions';
 import { bindActionCreators } from 'redux';
@@ -16,10 +15,7 @@ class HomeContainer extends Component {
 
     getKeywords = (event) => {
         let key = event.target.value;
-        { key && key.length > 2 ?
-          this.props.fetchForArtist(key) : this.props.fetchForArtist('')
-        }
-        
+          this.props.fetchForArtist(key)
     }
 
 

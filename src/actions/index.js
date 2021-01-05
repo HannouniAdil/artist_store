@@ -21,3 +21,13 @@ export function artistListAll(){
   }
 
 }
+
+export function fetchArtistDetailsById(id){
+  const request = axios.get(`${URL}/artists?id=${id}`)
+                   .then(response => response.data)
+   return{
+     type:'FIND_ARTIST_DETAILS',
+     payload: request
+   }
+ 
+ }
