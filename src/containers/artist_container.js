@@ -1,21 +1,17 @@
 import React,{ Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchArtistDetailsById } from '../actions';
+import { fetchArtistDetailsById, clearArtistData } from '../actions';
 import { bindActionCreators } from 'redux';
 
 class ArtistContainer extends Component {
      
     componentWillMount() {
       this.props.fetchArtistDetailsById(this.props.match.params.id)
-        axios.get(`http://localhost:3004/artists?id=${this.props.match.params.id}`)
-        .then(response =>{
-           this.setState({
-             artist:response.data[0]
-           })
-        })
+    }
 
+    componentWillUnmount(){
+      this.props.clearArtistData();
     }
 
     artistTemplate = (data) =>(
@@ -71,7 +67,7 @@ function mapStateToProps (state){
 }
 
 function mapDispatchToProps (dispatch){
-  return bindActionCreators({fetchArtistDetailsById}, dispatch)
+  return bindActionCreators({fetchArtistDetailsById, clearArtistData}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistContainer);

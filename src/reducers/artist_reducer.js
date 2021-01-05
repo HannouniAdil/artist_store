@@ -8,6 +8,8 @@ export default function(state={}, action){
       return {...state, artistList:action.payload} 
     case 'FIND_ARTIST_DETAILS':
       return {...state, artistDetails:action.payload} 
+    case 'CLEAR_ARTIST_DATA':
+      return {...state, artistDetails:action.payload} 
     default:
       return state;
   }

@@ -31,3 +31,11 @@ export function fetchArtistDetailsById(id){
    }
  
  }
+
+ export function clearArtistData(){
+   return{
+     type:'CLEAR_ARTIST_DATA',
+     payload: null
+   }
+ 
+ }
